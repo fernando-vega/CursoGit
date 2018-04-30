@@ -1,43 +1,137 @@
-</ol>
-<h4>Comandos de Git</h4>
-<ul>
-  <li><strong>git init</strong> permite iniciar un repositorio en el directorio en el que estamos</li>
-  <li>Una vez creado nuestro proyecto los archivos estaran en un estado <span>untraked</span> es decir que no estan en el repositorio sino en el directorio de trabajo, para ver el estado de los archivos ejecutamos el comando <strong>git status</strong></li>
-  <li><strong>git add nombreArchivo</strong> para agregar nuestros cambios al siguiente estado usamos  para agregar un archivo especifico, si queremos agregar todo de una sola vez usamos <strong>git add -A</strong> </li>
-  <li>Si agregamos un archivo que por algun motivo no queriamos agregar podemos deshacer los cambios con <strong>git rm --cached nombreArchivo</strong></li>
-  <li><strong>git rm -f nombreArchivo</strong> sirve para eliminar completamente un archivo</li>
-  <h5>COMMITS</h5>
-  <li><strong>git commit -m "Mensaje"</strong> permite enviar los archivos que esten en STAGING AREA al GIT DIRECTORY</li>
-  <li><strong>git commit --amend</strong> permite agregar cambios al ultimo commit</li>
-  <h5>TAGS ó Versiones</h5>
-  <li><strong>git tag -a [numero version] -m 'mensajeVersion'</strong>Sirve para agregar la version de nuestro proyecto</li>
-  <li><strong>git tag -l</strong>ver la version</li>
-  <li><strong>git tag -f</strong>para renombrar</li>
-  <li><strong>git tag -d [numero version]</strong>Elimina el tag en el commit</li>
-  <h5>Configurar log</h5>
-  <li><strong>git log --oneline</strong> Permite que se muestren los logs en una sola linea de forma compacta</li>
-  <li><strong>git log --graph</strong> Mustra el grafico de las ramas dentro del arbol de una manera mas comoda</li>
-  <li><strong>git log -[numero]</strong> Muestra la cantidad de log que necesitemos</li>
-  <p>Comparto la configuración que uso: <strong>git config --global alias.superlog "log --graph --abbrev-commit --date=relative --all --format=format:'%C(bold blue)%h%C(reset) %C(auto,magenta)%G? %C(bold green)(%>(18,trunc)%aD)%C(reset) %C(bold blue)[%<(10,trunc)%aN]%Creset - %s%C(reset) %C(bold yellow)%d%C(reset)'"</strong></p>
-  <h5>DIFF</h5>
-  <li><strong>git diff</strong>Muestra los cambios realizados en dos commit diferentes, se puede usar solo o colocando los <span>SHA o versiones(tags)</span> de cada commit</li>
-  <h5>RESET</h5>
-  <li><strong>git reset --soft [SHA] </strong>Quita un cambio del commit y lo regresa al staging directory</li>
-  <li><strong>git reset --mixed [SHA] </strong>Quita cambios del commit y los regresa al working directory</li>
-  <li><strong>git reset --hard [SHA] </strong>Elimina los cambios incluso del working directory, es el más peligroso de todos porque podemos perder parte de nuestro trabajo</li>
-  <h5>BRANCH o Ramas</h5>
-  <li><strong>git branch [nombreBranch]</strong> Crea una nueva rama</li>
-  <li><strong>git branch -l</strong> Permite listar las ramas existentes</li>
-  <li><strong>git branch -d [nombreBranch]</strong> Elimina la rama, en caso de que no tenga cambios o commits</li>
-  <li><strong>git branch -D [nombreBranch]</strong> Elimina la rama de forma forza sin importar si tiene commits</li>
-  <li><strong>git branch -m [nombreActual] [nuevoNombre]</strong> Editar el nombre de una rama</li>
-  <li><strong>git checkout [nombreRama ó SHA del commit]</strong> Sirve para movernos entre ramas o commits para crear nuevas ramas a partir de ese commit</li>
-  <li><strong>git checkout -b [nombreBranch]</strong> Este comando permite crear una rama y movernos a esa rama creada</li>
-</ul> 
-</article>
-<article>
-<h2>GitHub</h2>
-</article>
-</section>
-</body>
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+  <title>Curso de Git</title> 
+  <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+  <section> 
+    <header> 
+      <nav> 
+        <ul> 
+          <li>Git</li> 
+          <li>GitHub</li> 
+        </ul> 
+      </nav> 
+    </header> 
+  </section> 
+  <section> 
+    <article> 
+      <h2>Git</h2> 
+      <h3>Pasos para su uso</h3> 
+      <ol> 
+        <li>Descargar Git desde la<a href="https://git-scm.com/" target="_blank">página de Git</a></li> 
+        <li>Lo instalamos</li> 
+        <li>Despues de instalado, abrimos la terminal de git bash</li> 
+        <li>Para probar que esta instalado, colocamos en la terminal de comandos <strong>git --version</strong></li> 
+      </ol> 
+      <p>Una vez dentro de git lo primero que hacemos es configurar de forma global los parametros básicos</p> 
+      <ol> 
+        <li>Colocamos nuesto correo con el comando <strong>git config --global user.gmail nombre@email.com</strong></li> 
+        <li>Agregamos nuestro nombre <strong>git config --global user.name Pepito</strong> o si vas a agragar tu nombre completo con espacios, colocas <strong>"Pepito Perez"</strong></li> 
+        <li>Para que se muetren colores en la consola, ponemos <strong>git config --global color.ui true</strong></li> 
+      </ol> 
+      <p>Despuesde haber realizado estas configuraciones basicas, iniciamos con los comandos</p> 
+      <h4>Comandos de la terminal:</h4> 
+      <ul> 
+        <li><strong>cd</strong> Cambiar de directorio</li> 
+        <li><strong>cd..</strong> Salir de directorio</li> 
+        <li><strong>mkdir</strong> Crear carpeta</li> 
+        <li><strong>ls</strong> Listar directorios</li> 
+        <li><strong>clear</strong> Limpiar la terminal</li> 
+        <li><strong>touch nombreArchivo.extension</strong> Crear archivos</li> 
+        <li><strong>rm nombreArchivo.extension</strong> Borrar archivos</li> 
+        <li><strong>rm -rf nombreCarpeta</strong> Borrar carpeta</li> 
+      </ul> 
+      <p>Antes de ver los comandos de Git debemos conocer los tres estados de git</p> 
+      <ol> 
+        <li>Working area: es el area de trabajo en la que estamos realizando los cambios</li> 
+        <li>Staging area: este estado es donde los archivos estan agregados o con los cambios realizados antes de pasar al ultimo estado</li> 
+        <li>Git directory: estado final donde almacenara el proyecto con todo todos los metadatos, es la parte mas importante de git</li> 
+      </ol> 
+      <h4>Comandos de Git</h4> 
+      <ul> 
+        <li><strong>git init</strong> permite iniciar un repositorio en el directorio en el que estamos</li> 
+        <li>Una vez creado nuestro proyecto los archivos estaran en un estado <span>untraked</span> es decir que no estan en el repositorio sino en el directorio de trabajo, para ver el estado de los archivos ejecutamos el comando <strong>git status</strong></li> 
+        <li><strong>git add nombreArchivo</strong> para agregar nuestros cambios al siguiente estado usamos  para agregar un archivo especifico, si queremos agregar todo de una sola vez usamos <strong>git add -A</strong> </li> 
+        <li>Si agregamos un archivo que por algun motivo no queriamos agregar podemos deshacer los cambios con <strong>git rm --cached nombreArchivo</strong></li> 
+        <li><strong>git rm -f nombreArchivo</strong> sirve para eliminar completamente un archivo</li> 
+        <h5>COMMITS</h5> 
+        <li><strong>git commit -m "Mensaje"</strong> permite enviar los archivos que esten en STAGING AREA al GIT DIRECTORY</li> 
+        <li><strong>git commit --amend</strong> permite agregar cambios al ultimo commit</li> 
+        <h5>TAGS ó Versiones</h5> 
+        <li><strong>git tag -a [numero version] -m 'mensajeVersion'</strong>Sirve para agregar la version de nuestro proyecto</li> 
+        <li><strong>git tag -l</strong>ver la version</li> 
+        <li><strong>git tag -f</strong>para renombrar</li> 
+        <li><strong>git tag -d [numero version]</strong>Elimina el tag en el commit</li> 
+        <h5>Configurar log</h5> 
+        <li><strong>git log --oneline</strong> Permite que se muestren los logs en una sola linea de forma compacta</li> 
+        <li><strong>git log --graph</strong> Mustra el grafico de las ramas dentro del arbol de una manera mas comoda</li> 
+        <li><strong>git log -[numero]</strong> Muestra la cantidad de log que necesitemos</li> 
+        <p>Comparto la configuración que uso: <strong>git config --global alias.superlog "log --graph --abbrev-commit --date=relative --all --format=format:'%C(bold blue)%h%C(reset) %C(auto,magenta)%G? %C(bold green)(%>(18,trunc)%aD)%C(reset) %C(bold blue)[%<(10,trunc)%aN]%Creset - %s%C(reset) %C(bold yellow)%d%C(reset)'"</strong></p> 
+        <h5>DIFF</h5> 
+        <li><strong>git diff</strong>Muestra los cambios realizados en dos commit diferentes, se puede usar solo o colocando los <span>SHA o versiones(tags)</span> de cada commit</li> 
+        <h5>RESET</h5> 
+        <li><strong>git reset --soft [SHA] </strong>Quita un cambio del commit y lo regresa al staging directory</li> 
+        <li><strong>git reset --mixed [SHA] </strong>Quita cambios del commit y los regresa al working directory</li> 
+        <li><strong>git reset --hard [SHA] </strong>Elimina los cambios incluso del working directory, es el más peligroso de todos porque podemos perder parte de nuestro trabajo</li> 
+        <h5>BRANCH o Ramas</h5> 
+        <li><strong>git branch [nombreBranch]</strong> Crea una nueva rama</li> 
+        <li><strong>git branch -l</strong> Permite listar las ramas existentes</li> 
+        <li><strong>git branch -d [nombreBranch]</strong> Elimina la rama, en caso de que no tenga cambios o commits</li> 
+        <li><strong>git branch -D [nombreBranch]</strong> Elimina la rama de forma forza sin importar si tiene commits</li> 
+        <li><strong>git branch -m [nombreActual] [nuevoNombre]</strong> Editar el nombre de una rama</li> 
+        <li><strong>git checkout [nombreRama ó SHA del commit]</strong> Sirve para movernos entre ramas o commits para crear nuevas ramas a partir de ese commit</li> 
+        <li><strong>git checkout -b [nombreBranch]</strong> Este comando permite crear una rama y movernos a esa rama creada</li> 
+      </ul>  
+    </article> 
+    <article> 
+      <h2>GitHub</h2> 
+    </article> 
+  </section> 
+</ol> 
+<h4>Comandos de Git</h4> 
+<ul> 
+  <li><strong>git init</strong> permite iniciar un repositorio en el directorio en el que estamos</li> 
+  <li>Una vez creado nuestro proyecto los archivos estaran en un estado <span>untraked</span> es decir que no estan en el repositorio sino en el directorio de trabajo, para ver el estado de los archivos ejecutamos el comando <strong>git status</strong></li> 
+  <li><strong>git add nombreArchivo</strong> para agregar nuestros cambios al siguiente estado usamos  para agregar un archivo especifico, si queremos agregar todo de una sola vez usamos <strong>git add -A</strong> </li> 
+  <li>Si agregamos un archivo que por algun motivo no queriamos agregar podemos deshacer los cambios con <strong>git rm --cached nombreArchivo</strong></li> 
+  <li><strong>git rm -f nombreArchivo</strong> sirve para eliminar completamente un archivo</li> 
+  <h5>COMMITS</h5> 
+  <li><strong>git commit -m "Mensaje"</strong> permite enviar los archivos que esten en STAGING AREA al GIT DIRECTORY</li> 
+  <li><strong>git commit --amend</strong> permite agregar cambios al ultimo commit</li> 
+  <h5>TAGS ó Versiones</h5> 
+  <li><strong>git tag -a [numero version] -m 'mensajeVersion'</strong>Sirve para agregar la version de nuestro proyecto</li> 
+  <li><strong>git tag -l</strong>ver la version</li> 
+  <li><strong>git tag -f</strong>para renombrar</li> 
+  <li><strong>git tag -d [numero version]</strong>Elimina el tag en el commit</li> 
+  <h5>Configurar log</h5> 
+  <li><strong>git log --oneline</strong> Permite que se muestren los logs en una sola linea de forma compacta</li> 
+  <li><strong>git log --graph</strong> Mustra el grafico de las ramas dentro del arbol de una manera mas comoda</li> 
+  <li><strong>git log -[numero]</strong> Muestra la cantidad de log que necesitemos</li> 
+  <p>Comparto la configuración que uso: <strong>git config --global alias.superlog "log --graph --abbrev-commit --date=relative --all --format=format:'%C(bold blue)%h%C(reset) %C(auto,magenta)%G? %C(bold green)(%>(18,trunc)%aD)%C(reset) %C(bold blue)[%<(10,trunc)%aN]%Creset - %s%C(reset) %C(bold yellow)%d%C(reset)'"</strong></p> 
+  <h5>DIFF</h5> 
+  <li><strong>git diff</strong>Muestra los cambios realizados en dos commit diferentes, se puede usar solo o colocando los <span>SHA o versiones(tags)</span> de cada commit</li> 
+  <h5>RESET</h5> 
+  <li><strong>git reset --soft [SHA] </strong>Quita un cambio del commit y lo regresa al staging directory</li> 
+  <li><strong>git reset --mixed [SHA] </strong>Quita cambios del commit y los regresa al working directory</li> 
+  <li><strong>git reset --hard [SHA] </strong>Elimina los cambios incluso del working directory, es el más peligroso de todos porque podemos perder parte de nuestro trabajo</li> 
+  <h5>BRANCH o Ramas</h5> 
+  <li><strong>git branch [nombreBranch]</strong> Crea una nueva rama</li> 
+  <li><strong>git branch -l</strong> Permite listar las ramas existentes</li> 
+  <li><strong>git branch -d [nombreBranch]</strong> Elimina la rama, en caso de que no tenga cambios o commits</li> 
+  <li><strong>git branch -D [nombreBranch]</strong> Elimina la rama de forma forza sin importar si tiene commits</li> 
+  <li><strong>git branch -m [nombreActual] [nuevoNombre]</strong> Editar el nombre de una rama</li> 
+  <li><strong>git checkout [nombreRama ó SHA del commit]</strong> Sirve para movernos entre ramas o commits para crear nuevas ramas a partir de ese commit</li> 
+  <li><strong>git checkout -b [nombreBranch]</strong> Este comando permite crear una rama y movernos a esa rama creada</li> 
+</ul>  
+</article> 
+<article> 
+<h2>GitHub</h2> 
+</article> 
+</section> 
+</body> 
 </html>
