@@ -71,7 +71,8 @@
       <ol>
         <li>Working area: es el area de trabajo en la que estamos realizando los cambios</li>
         <li>Staging area: este estado es donde los archivos estan agregados o con los cambios realizados antes de pasar al ultimo
-          estado</li>
+          estado
+        </li>
         <li>Git directory: estado final donde almacenara el proyecto con todo todos los metadatos, es la parte mas importante
           de git</li>
       </ol>
@@ -118,8 +119,7 @@
         <p>Comparto la configuración que uso:
           <strong>git config --global alias.superlog "log --graph --abbrev-commit --date=relative --all --format=format:'%C(bold
             blue)%h%C(reset) %C(auto,magenta)%G? %C(bold green)(%>(18,trunc)%aD)%C(reset) %C(bold blue)[%
-            <(10,trunc)%aN]%Creset
-              - %s%C(reset) %C(bold yellow)%d%C(reset) '"</strong></p> 
+            <(10,trunc)%aN]%Creset - %s%C(reset) %C(bold yellow)%d%C(reset) '"</strong></p> 
         <h5>DIFF</h5> 
         <li><strong>git diff</strong>Muestra los cambios realizados en dos commit diferentes, se puede usar solo o colocando los <span>SHA o versiones(tags)</span> de cada commit</li> 
         <h5>RESET</h5> 
@@ -133,64 +133,22 @@
         <li><strong>git branch -D [nombreBranch]</strong> Elimina la rama de forma forza sin importar si tiene commits</li> 
         <li><strong>git branch -m [nombreActual] [nuevoNombre]</strong> Editar el nombre de una rama</li> 
         <li><strong>git checkout [nombreRama ó SHA del commit]</strong> Sirve para movernos entre ramas o commits para crear nuevas ramas a partir de ese commit</li> 
-        <li><strong>git checkout -b [nombreBranch]</strong> Este comando permite crear una rama y movernos a esa rama creada</li> 
+        <li><strong>git checkout -b [nombreBranch]</strong> Este comando permite crear una rama y movernos a esa rama creada</li>
+        <h5>MERGE</h5>
+        <li><strong>git merge [nombreRama]</strong> En este comando debemos estar en la rama en la que queremos que se combinen los cambios que se realizaron en las demas ramas<span> Ejemplo: si mi rama principal es master y quiero unir los cambios de otra rama, me ubico en la rama principal con el comando </span><strong>git checkout master</strong><span> una vez estemos en nuetra rama usamos merge y el nombre de la rama que queremos unir,</span> esto creara un nuevo commit con la union de las ramas</li>
+        <h5>STASH</h5>
+        <li><strong>git stash</strong> realiza un guardado temporal en donde no quedara en el staging area ni en un commit en caso de que tengamos que cambiarnos de rama pero aun no queremos hacer un commit, una especie de limbo de cambios donde podremos recuperarlos después</li>
+        <li><strong>git stash list</strong> Nos permite listar los stash que tengamos</li>
+        <li><strong>git stash drop stash@{numero}</strong> Permite eliminar un stash dentro de nuestra lista</li>
+        <li><strong>git stash apply</strong> Este comando recupera el stash realizado a nuestro working directory</li>
+        <h5>CHERRY-PICK</h5>
+        <li><strong>git cherry-pick [SHA]</strong> El comando cherry-pick permite llevar un commit realizado en una rama equivocada a la rama correcta, para esto copiamos el codigo del commit(SHA) que queremos cambiar a otra rama, nos movemos a la rama a la cual queremos mover este commit y ejecutamos este comando.</li>
       </ul>  
     </article> 
     <article> 
       <h2>GitHub</h2> 
     </article> 
   </section> 
-</ol> 
-<h4>Comandos de Git</h4> 
-<ul> 
-  <li><strong>git init</strong> permite iniciar un repositorio en el directorio en el que estamos</li> 
-  <li>Una vez creado nuestro proyecto los archivos estaran en un estado <span>untraked</span> es decir que no estan en el repositorio sino en el directorio de trabajo, para ver el estado de los archivos ejecutamos el comando <strong>git status</strong></li> 
-  <li><strong>git add nombreArchivo</strong> para agregar nuestros cambios al siguiente estado usamos  para agregar un archivo especifico, si queremos agregar todo de una sola vez usamos <strong>git add -A</strong> </li> 
-  <li>Si agregamos un archivo que por algun motivo no queriamos agregar podemos deshacer los cambios con <strong>git rm --cached nombreArchivo</strong></li> 
-  <li><strong>git rm -f nombreArchivo</strong> sirve para eliminar completamente un archivo</li> 
-  <h5>COMMITS</h5> 
-  <li><strong>git commit -m "Mensaje"</strong> permite enviar los archivos que esten en STAGING AREA al GIT DIRECTORY</li> 
-  <li><strong>git commit --amend</strong> permite agregar cambios al ultimo commit</li> 
-  <h5>TAGS ó Versiones</h5> 
-  <li><strong>git tag -a [numero version] -m 'mensajeVersion
-              '</strong>Sirve para agregar la version de nuestro proyecto</li> 
-  <li><strong>git tag -l</strong>ver la version</li> 
-  <li><strong>git tag -f</strong>para renombrar</li> 
-  <li><strong>git tag -d [numero version]</strong>Elimina el tag en el commit</li> 
-  <h5>Configurar log</h5> 
-  <li><strong>git log --oneline</strong> Permite que se muestren los logs en una sola linea de forma compacta</li> 
-  <li><strong>git log --graph</strong> Mustra el grafico de las ramas dentro del arbol de una manera mas comoda</li> 
-  <li><strong>git log -[numero]</strong> Muestra la cantidad de log que necesitemos</li> 
-  <p>Comparto la configuración que uso: <strong>git config --global alias.superlog "log --graph --abbrev-commit --date=relative --all --format=format:'%C(bold blue)%h%C(reset) %C(auto,magenta)%G? %C(bold green)(%>(18,trunc)%aD)%C(reset) %C(bold blue)[%
-              <(10,trunc)%aN]%Creset - %s%C(reset) %C(bold yellow)%d%C(reset) '"</strong></p> 
-  <h5>DIFF</h5> 
-  <li><strong>git diff</strong>Muestra los cambios realizados en dos commit diferentes, se puede usar solo o colocando los <span>SHA o versiones(tags)</span> de cada commit</li> 
-  <h5>RESET</h5> 
-  <li><strong>git reset --soft [SHA] </strong>Quita un cambio del commit y lo regresa al staging directory</li> 
-  <li><strong>git reset --mixed [SHA] </strong>Quita cambios del commit y los regresa al working directory</li> 
-  <li><strong>git reset --hard [SHA] </strong>Elimina los cambios incluso del working directory, es el más peligroso de todos porque podemos perder parte de nuestro trabajo</li> 
-  <h5>BRANCH o Ramas</h5> 
-  <li><strong>git branch [nombreBranch]</strong> Crea una nueva rama</li> 
-  <li><strong>git branch -l</strong> Permite listar las ramas existentes</li> 
-  <li><strong>git branch -d [nombreBranch]</strong> Elimina la rama, en caso de que no tenga cambios o commits</li> 
-  <li><strong>git branch -D [nombreBranch]</strong> Elimina la rama de forma forza sin importar si tiene commits</li> 
-  <li><strong>git branch -m [nombreActual] [nuevoNombre]</strong> Editar el nombre de una rama</li> 
-  <li><strong>git checkout [nombreRama ó SHA del commit]</strong> Sirve para movernos entre ramas o commits para crear nuevas ramas a partir de ese commit</li> 
-  <li><strong>git checkout -b [nombreBranch]</strong> Este comando permite crear una rama y movernos a esa rama creada</li>
-  <h5>MERGE</h5>
-  <li><strong>git merge [nombreRama]</strong> En este comando debemos estar en la rama en la que queremos que se combinen los cambios que se realizaron en las demas ramas<span> Ejemplo: si mi rama principal es master y quiero unir los cambios de otra rama, me ubico en la rama principal con el comando </span><strong>git checkout master</strong><span> una vez estemos en nuetra rama usamos merge y el nombre de la rama que queremos unir,</span> esto creara un nuevo commit con la union de las ramas</li>
-  <h5>STASH</h5>
-  <li><strong>git stash</strong> realiza un guardado temporal en donde no quedara en el staging area ni en un commit en caso de que tengamos que cambiarnos de rama pero aun no queremos hacer un commit, una especie de limbo de cambios donde podremos recuperarlos después</li>
-  <li><strong>git stash list</strong> Nos permite listar los stash que tengamos</li>
-  <li><strong>git stash drop stash@{numero}</strong> Permite eliminar un stash dentro de nuestra lista</li>
-  <li><strong>git stash apply</strong> Este comando recupera el stash realizado a nuestro working directory</li>
-  <h5>CHERRY-PICK</h5>
-  <li><strong>git cherry-pick [SHA]</strong> El comando cherry-pick permite llevar un commit realizado en una rama equivocada a la rama correcta, para esto copiamos el codigo del commit(SHA) que queremos cambiar a otra rama, nos movemos a la rama a la cual queremos mover este commit y ejecutamos este comando.</li>
-</ul>  
-</article> 
-<article> 
-<h2>GitHub</h2> 
-</article> 
 </section> 
 </body> 
 </html>
