@@ -148,6 +148,24 @@
     <article> 
       <h2>GitHub</h2> 
     </article> 
+    <ol>
+      <li>Lo primero que debemos hacer es crear nuestra cuenta personal o grupo de trabajo en la plataforma de GitHub o GitLab</li>
+      <li>Una vez creado debemos iniciar un nuevo repositorio donde almacenaremos el proyecto</li>
+      <li>Para alamcenar el proyecto que tenemos de forma local en nuestra cuenta de GitHub, debemos clonar nuestro proyecto dando clic en el boton verde que aparece en la parte derecha de github despues de haber creado nuestro repositorio, comipiamos el enlace SSH o HTTPS</li>
+      <li>Vamos a la terminal, abrimos en la terminal la carpeta donde queremos que este nuestro proyecto y usamos el comando <strong>git clone [ulrCopiada]</strong> , esto clonara el repositorio creado en GitHub </li>
+      <li>Una vez tenemos este repositorio clonado debemos generar una clave ssh que nos permitira enviar los cambios de nuestro proyecto local a GitHub, para esto usamos el comando <strong>ssh-keygen -t rsa -b 4096 -C "tuemail@email.com"</strong> despues de esto nos mostra la ruta local donde se guardara nuestra clave</li>
+      <li>Despues de generar nuestra llave debemos copiarla usando el comando <span>Para Mac</span><strong> pbcopy < ~/.ssh/id_rsa.pub</strong>. <span>Para Windows</span> <strong>cat ~/.ssh/id_rsa.pub</strong></li>
+      <li>Ahora iremos a GitHub y en el menú deplegable de nuestro avatar seleccionamos <span>Configuración</span> y buscamos <span>SSH and GPG keys</span> y damos en  <span> nueva llave SSH</span>, agergamos un titulo y pegamos nuestra llave y guardamos</li>
+      <li>Es el momento de subir nuestro proyecto a GitHub, para esto usamos el comando <strong>git remote add origin [URL]</strong> el cual permite agregar un repositorio remoto</li>
+      <li><strong>git remote -v</strong> Nos permite verificar que el repositorio enlazado este funcionando, esto mostrara la url de nuestro repositorio</li>
+      <li><strong>git remote remove [nombreRepositorio]</strong> Permite remover, eliminar un repositorio</li>
+      <li><strong>git fetch origin master</strong> Trae la rama master de nuestro repositorio en GitHub</li>
+      <li><strong>git merge origin/master --allow-unrelated-histories</strong> Este comando mezcla los cambios entre el repositorio local y la rama que traemos del repositorio remoto</li>
+      <li><strong>git pull origin master</strong> hace lo mismo que los dos comandos anteriores, es una manera simple de traer cambios desde el repositorio remoto</li>
+      <li><strong>git push origin master</strong> envia todos los cambios al repositorio remoto</li>
+      <li><strong>git push origin master --tags</strong> envia todos los tags que hayamos creado</li>
+      <li><strong>git push origin [rama]</strong> Permite enviar una rama en especifica</li>
+    </ol>
   </section> 
 </section> 
 </body> 
