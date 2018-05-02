@@ -14,14 +14,14 @@
     <header>
       <nav>
         <ul>
-          <li>Git</li>
-          <li>GitHub</li>
+          <a href="#git"><li>Git</li></a>
+          <a href="#github"><li>GitHub</li></a>
         </ul>
       </nav>
     </header>
   </section>
-  <section>
-    <article>
+  <section class="container">
+    <article id="git">
       <h2>Git</h2>
       <h3>Pasos para su uso</h3>
       <ol>
@@ -145,28 +145,31 @@
         <li><strong>git cherry-pick [SHA]</strong> El comando cherry-pick permite llevar un commit realizado en una rama equivocada a la rama correcta, para esto copiamos el codigo del commit(SHA) que queremos cambiar a otra rama, nos movemos a la rama a la cual queremos mover este commit y ejecutamos este comando.</li>
       </ul>  
     </article> 
-    <article> 
+    <article id="github"> 
       <h2>GitHub</h2> 
+      <ul>
+        <li>Lo primero que debemos hacer es crear nuestra cuenta personal o grupo de trabajo en la plataforma de GitHub</li>
+        <li>Una vez creado debemos iniciar un nuevo repositorio donde almacenaremos el proyecto</li>
+        <li>Para alamcenar el proyecto que tenemos de forma local de nuestra cuenta de GitHub, debemos clonar nuestro proyecto dando clic en el boton verde que aparece en la parte derecha de github copiamos el enlace SSH o HTTPS o lo descargamos directamente en formato ZIP</li>
+        <li>Vamos a la terminal, abrimos en la terminal la carpeta donde queremos que este nuestro proyecto y usamos el comando <strong>git clone [ulrCopiada]</strong> , esto clonara el repositorio creado en GitHub </li>
+        <li>Para enviar nuestro proyecto local a github, primero debemos generar una clave ssh que nos permitira enviar los cambios de nuestro proyecto local a GitHub, para esto usamos el comando <strong>ssh-keygen -t rsa -b 4096 -C "tuemail@email.com"</strong> despues de esto nos mostra la ruta local donde se guardara nuestra clave</li>
+        <li>Despues de generar nuestra llave debemos copiarla usando el comando <span>Para Mac</span><strong> pbcopy < ~/.ssh/id_rsa.pub</strong>. <span>Para Windows</span> <strong>cat ~/.ssh/id_rsa.pub</strong></li>
+        <li>Ahora iremos a GitHub y en el menú deplegable de nuestro avatar seleccionamos <span>Configuración</span> y buscamos <span>SSH and GPG keys</span> y damos en  <span> nueva llave SSH</span>, agergamos un titulo y pegamos nuestra llave y guardamos</li>
+        <li>Es el momento de subir nuestro proyecto a GitHub, para esto usamos el comando <strong>git remote add origin [URL]</strong> el cual permite agregar un repositorio remoto</li>
+        <li><strong>git remote -v</strong> Nos permite verificar que el repositorio enlazado este funcionando, esto mostrara la url de nuestro repositorio</li>
+        <li><strong>git remote remove [nombreRepositorio]</strong> Permite remover, eliminar un repositorio</li>
+        <li><strong>git fetch origin master</strong> Trae la rama master de nuestro repositorio en GitHub</li>
+        <li><strong>git merge origin/master --allow-unrelated-histories</strong> Este comando mezcla los cambios entre el repositorio local y la rama que traemos del repositorio remoto</li>
+        <li><strong>git pull origin master</strong> hace lo mismo que los dos comandos anteriores, es una manera simple de traer cambios desde el repositorio remoto</li>
+        <li><strong>git push origin master</strong> envia todos los cambios al repositorio remoto</li>
+        <li><strong>git push origin master --tags</strong> envia todos los tags que hayamos creado</li>
+        <li><strong>git push origin [rama]</strong> Permite enviar una rama en especifica</li>
+      </ul>
     </article> 
-    <ol>
-      <li>Lo primero que debemos hacer es crear nuestra cuenta personal o grupo de trabajo en la plataforma de GitHub</li>
-      <li>Una vez creado debemos iniciar un nuevo repositorio donde almacenaremos el proyecto</li>
-      <li>Para alamcenar el proyecto que tenemos de forma local de nuestra cuenta de GitHub, debemos clonar nuestro proyecto dando clic en el boton verde que aparece en la parte derecha de github copiamos el enlace SSH o HTTPS o lo descargamos directamente en formato ZIP</li>
-      <li>Vamos a la terminal, abrimos en la terminal la carpeta donde queremos que este nuestro proyecto y usamos el comando <strong>git clone [ulrCopiada]</strong> , esto clonara el repositorio creado en GitHub </li>
-      <li>Para enviar nuestro proyecto local a github, primero debemos generar una clave ssh que nos permitira enviar los cambios de nuestro proyecto local a GitHub, para esto usamos el comando <strong>ssh-keygen -t rsa -b 4096 -C "tuemail@email.com"</strong> despues de esto nos mostra la ruta local donde se guardara nuestra clave</li>
-      <li>Despues de generar nuestra llave debemos copiarla usando el comando <span>Para Mac</span><strong> pbcopy < ~/.ssh/id_rsa.pub</strong>. <span>Para Windows</span> <strong>cat ~/.ssh/id_rsa.pub</strong></li>
-      <li>Ahora iremos a GitHub y en el menú deplegable de nuestro avatar seleccionamos <span>Configuración</span> y buscamos <span>SSH and GPG keys</span> y damos en  <span> nueva llave SSH</span>, agergamos un titulo y pegamos nuestra llave y guardamos</li>
-      <li>Es el momento de subir nuestro proyecto a GitHub, para esto usamos el comando <strong>git remote add origin [URL]</strong> el cual permite agregar un repositorio remoto</li>
-      <li><strong>git remote -v</strong> Nos permite verificar que el repositorio enlazado este funcionando, esto mostrara la url de nuestro repositorio</li>
-      <li><strong>git remote remove [nombreRepositorio]</strong> Permite remover, eliminar un repositorio</li>
-      <li><strong>git fetch origin master</strong> Trae la rama master de nuestro repositorio en GitHub</li>
-      <li><strong>git merge origin/master --allow-unrelated-histories</strong> Este comando mezcla los cambios entre el repositorio local y la rama que traemos del repositorio remoto</li>
-      <li><strong>git pull origin master</strong> hace lo mismo que los dos comandos anteriores, es una manera simple de traer cambios desde el repositorio remoto</li>
-      <li><strong>git push origin master</strong> envia todos los cambios al repositorio remoto</li>
-      <li><strong>git push origin master --tags</strong> envia todos los tags que hayamos creado</li>
-      <li><strong>git push origin [rama]</strong> Permite enviar una rama en especifica</li>
-    </ol>
   </section> 
-</section> 
+</section>
+<footer>
+  <p> Elaborado por: Fernando Vega </p>
+</footer>
 </body> 
 </html>

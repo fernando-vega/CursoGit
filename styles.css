@@ -1,8 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro|Titillium+Web:300,400,700');
+
 body{
   margin: 0;
-  background-color: aquamarine;
+  padding: 0;
+}
+
+p,span,h1,h2,h3,h4,h5,li{
+  font-family: 'Titillium Web', sans-serif;
+}
+strong{
+  font-family: 'Source Code Pro', monospace;
+  color: #05ff05;
+  background: black;
+  padding: 2px 5px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1em;
+  margin: 0 5px;
+}
+li{
+  line-height: 1.8em;
+}
+ul, ol{
+  padding: 0;
+  margin: 0;
 }
 
 ul li{
-  list-style: none;
+}
+
+header{
+  width: 100%;
+}
+
+header nav ul{
+  display: grid;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+header nav ul a{
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  list-style: none !important;
+}
+
+header nav ul a:nth-child(1){
+  grid-column: 1 / 2;
+  background-color: rgb(241, 144, 33);
+}
+
+header nav ul a:nth-child(2){
+  grid-column: 2 / -1;
+  background-color: rgb(95, 37, 122);
+}
+
+header nav ul a{
+  width: 100%;
+  color: #fff;
+  text-decoration: none;
+}
+header nav ul a:hover{ 
+  background-color: darkslategray;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  padding: 50px 0;
+}
+
+article{
+  grid-column: 2 / 3;
+}
+
+h2{
+  color: darkslategray;
+  font-size: 28px;
+  text-decoration: underline;
+}
+
+h4{
+  font-size: 20px;
+  letter-spacing: 4px;
+}
+
+h5{
+  font-size: 18px;
+  letter-spacing: 4px;
+}
+
+footer{
+  background: darkslategray;
+  display: grid;
+  grid-template: 1fr;
+}
+p{
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
 }
